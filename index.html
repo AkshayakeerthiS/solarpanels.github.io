@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Panel Energy Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-image: url('background.jpg'); /* Add your background image URL here */
+      background-size: cover;
+    }
+   h1 {
+      color: white; /* Set title color to white */
+    }
+    #slider {
+      width: 50%;
+      margin: 0 auto;
+    }
+    #panelCount {
+      font-size: 20px;
+      color: white; /* Ensure text is visible on the background */
+    }
+    #powerProduced {
+      font-size: 20px;
+      margin-top: 20px;
+      color: white; /* Ensure text is visible on the background */
+    }
+    #energyCost {
+      font-size: 20px;
+      margin-top: 20px;
+      color: white; /* Ensure text is visible on the background */
+    }
+  </style>
+</head>
+<body>
+  <h1>Solar Panel Energy Calculator</h1>
+
+  <input type="range" min="0" max="100" value="0" id="slider" oninput="calculateEnergy()">
+  <div id="panelCount">Number of Solar Panels: 0</div>
+  <div id="powerProduced">Power Produced: 0 kW</div>
+  <div id="energyCost">Energy Savings: 0 kWh</div>
+
+  <script>
+    function calculateEnergy() {
+      // Get the value of the slider
+      var panelCount = document.getElementById("slider").value;
+      
+      // Calculate the power produced by the solar panels (assuming 1 panel produces 1 kW)
+      var powerProduced = Math.floor(panelCount*0.015*17);
+      
+      // Calculate the energy cost savings (assuming 198kWh per 10 sq ft)
+      var energyCostSavings = Math.floor(panelCount * 17 * 19.8);
+      
+      // Update the HTML elements with the calculated values
+      document.getElementById("panelCount").textContent = "Number of Solar Panels: " + panelCount;
+      document.getElementById("powerProduced").textContent = "Power Produced: " + powerProduced + "kW";
+      document.getElementById("energyCost").textContent = "Energy Savings: " + energyCostSavings + "kWh";
+    }
+  </script>
+</body>
+</html>
